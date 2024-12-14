@@ -4,6 +4,7 @@ go 1.23.4
 
 require (
 	github.com/earthboundkid/versioninfo/v2 v2.24.1
+	github.com/google/uuid v1.6.0
 	github.com/spf13/cobra v1.8.1
 )
 
