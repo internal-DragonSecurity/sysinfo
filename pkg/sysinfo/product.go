@@ -1,6 +1,11 @@
 package sysinfo
 
-import "github.com/google/uuid"
+import (
+	"encoding/json"
+	"fmt"
+	"github.com/google/uuid"
+	"log"
+)
 
 // Product information.
 type Product struct {
@@ -35,4 +40,14 @@ func (si *SysInfo) getProductInfo() {
 	if si.Product.Serial == "" {
 		si.Product.Serial = slurpFile("/proc/device-tree/serial-number")
 	}
+}
+
+func GetProductInfo() {
+	var si SysInfo
+	si.GetSysInfo()
+	data, err := json.MarshalIndent(&si.Product, "", "  ")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(string(data))
 }

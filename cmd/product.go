@@ -22,31 +22,21 @@ THE SOFTWARE.
 package cmd
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/dragonsecurity/sysinfo/pkg/sysinfo"
-	"log"
 
 	"github.com/spf13/cobra"
 )
 
-// fullCmd represents the full command
-var fullCmd = &cobra.Command{
-	Use:     "full",
-	Short:   "full output of all sysinfo",
-	Long:    "full output of all sysinfo",
-	Aliases: []string{"all"},
+// productCmd represents the product command
+var productCmd = &cobra.Command{
+	Use:   "product",
+	Short: "get product information of your system",
+	Long:  "get product information of your system",
 	Run: func(cmd *cobra.Command, args []string) {
-		var si sysinfo.SysInfo
-		si.GetSysInfo()
-		data, err := json.MarshalIndent(&si, "", "  ")
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Println(string(data))
+		sysinfo.GetProductInfo()
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(fullCmd)
+	rootCmd.AddCommand(productCmd)
 }

@@ -30,16 +30,16 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// fullCmd represents the full command
-var fullCmd = &cobra.Command{
-	Use:     "full",
-	Short:   "full output of all sysinfo",
-	Long:    "full output of all sysinfo",
-	Aliases: []string{"all"},
+// boardCmd represents the board command
+var boardCmd = &cobra.Command{
+	Use:   "board",
+	Short: "get information about the motherboard",
+	Long:  "get information about the motherboard",
+
 	Run: func(cmd *cobra.Command, args []string) {
 		var si sysinfo.SysInfo
 		si.GetSysInfo()
-		data, err := json.MarshalIndent(&si, "", "  ")
+		data, err := json.MarshalIndent(&si.Board, "", "  ")
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -48,5 +48,15 @@ var fullCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(fullCmd)
+	rootCmd.AddCommand(boardCmd)
+
+	// Here you will define your flags and configuration settings.
+
+	// Cobra supports Persistent Flags which will work for this command
+	// and all subcommands, e.g.:
+	// boardCmd.PersistentFlags().String("foo", "", "A help for foo")
+
+	// Cobra supports local flags which will only run when this command
+	// is called directly, e.g.:
+	// boardCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
