@@ -36,17 +36,17 @@ jobs:
       - name: "DEBUG: What's our directory & what's in it?"
         run: pwd && ls
 
-      - name: Build the dev_setup executables
+      - name: Build the sysinfo executables
         run: ./build-executables.sh ${{ github.event.release.tag_name }}
 
-      - name: List the dev_setup executables
+      - name: List the sysinfo executables
         run: ls -l ./release
 
-      - name: Upload the dev_setup binaries
+      - name: Upload the sysinfo binaries
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: main
-          file: ./release/dev_setup-*
+          file: ./release/sysinfo-*
           file_glob: true
           overwrite: true
