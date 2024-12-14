@@ -8,3 +8,8 @@ import (
 func GetVersion() {
 	fmt.Println(versioninfo.Short())
 }
+
+func GetVersionMeta() string {
+	version := versioninfo.Short()
+	return version
+}
