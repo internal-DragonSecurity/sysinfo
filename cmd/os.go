@@ -22,7 +22,7 @@ THE SOFTWARE.
 package cmd
 
 import (
-	"github.com/dragonsecurity/sysinfo/sysinfo"
+	"github.com/dragonsecurity/sysinfo/pkg/sysinfo"
 	"github.com/spf13/cobra"
 )
 

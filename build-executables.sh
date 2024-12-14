@@ -10,7 +10,7 @@ platforms=(
 
 for platform in "${platforms[@]}"
 do
-	platform_split=(${platform//\// })
+  platform_split=(${platform//\// })
   GOOS=${platform_split[0]}
   GOARCH=${platform_split[1]}
 
@@ -34,13 +34,20 @@ do
   fi
 
   zip_name="sysinfo-${version}-${os}-${GOARCH}"
+
+  # Create checksum for the built file
+  checksum_file="${output_name}.sha256"
+  echo "Generating checksum for release/$output_name..."
+  sha256sum release/$output_name > release/$checksum_file
+
   pushd release > /dev/null
   if [ $os = "windows" ]; then
-    zip $zip_name.zip $output_name
-    rm $output_name
+    zip $zip_name.zip $output_name $checksum_file
+    rm $output_name $checksum_file
   else
     chmod a+x $output_name
     gzip $output_name
+    gzip $checksum_file
   fi
   popd > /dev/null
 done

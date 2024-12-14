@@ -1,7 +1,7 @@
 package sysinfo
 
 import (
-	"github.com/dragonsecurity/sysinfo/sysinfo/cpuid"
+	"github.com/dragonsecurity/sysinfo/pkg/sysinfo/cpuid"
 	"strings"
 	"unsafe"
 )

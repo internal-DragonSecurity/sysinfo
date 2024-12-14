@@ -24,9 +24,8 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/dragonsecurity/sysinfo/pkg/sysinfo"
 	"log"
-
-	"github.com/dragonsecurity/sysinfo/sysinfo"
 
 	"github.com/spf13/cobra"
 )
