@@ -1,6 +1,6 @@
 module github.com/dragonsecurity/sysinfo
 
-go 1.23.12
+go 1.24.7
 
 require (
 	github.com/earthboundkid/versioninfo/v2 v2.24.1
